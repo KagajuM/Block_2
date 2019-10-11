@@ -7,9 +7,7 @@
 /* HEADER & MENU STYLING*/
 
 .heading {
-    display: block;
     position: fixed;
-    
     top: 0%;
     width: 100%
 }
@@ -44,90 +42,48 @@ li a:hover {
   color: #8d8d8d;
 }
 
-#username {
+#title {
     padding-left: 20px;
     padding-top: 25px;
-    font-size: 25pt;
+    font-size: 25px;
     font-weight: bold;
 }
 
 /* BODY STYLING*/
 .body-container {
-/* Sets height of children to height of largest child*/
+    /* Sets height of children to height of largest child*/
     display: flex;
     margin-top: 100px;
 }
-
-.left-container, .right-container {
-    background-color: #000000
-}
-
-.left-container {
+    
+.vertical-container{
+    background-color: #d1d4d7;
     margin-right: 20px;
     width: 33%;
     float: left;
-    background-color: #ffffff
+ 
 }
 
-.left-container img {
+.vertical-container img{
     height: 75px;
     width: 75px;
-    object-fit: cover;
     float: left;
     border-radius: 50%;
-    padding: 0px 0px 0px 0px;
-}
-
-.right-container {
-    width: 67%;
-    float: right;
-    background-color: #d0d0d0
-}
-
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.restaurant {
-    font: 15px Verdana;
-    font-weight: bold;
-    color: #0070c9;
-    padding-top: 15px;
-    margin-bottom: 0px;
-    border-top: 2px solid gray;
-}
-
-.restaurant:hover {
-    text-decoration: underline;
-}
-
-.comment {
-    font: 10pt Verdana;
-    margin-top: 0px;
-}
-.preferences-section {
-    background: #d0d0d0;
-    width: 100%;
-    float: left;
-}
-
-.preference {
-    background: #ffffff;
-    color: #0070c9;
-    border-radius: 15%;
-    height: 20px;
-    float: left;
     margin: 10px;
-    padding: 5px 5px 25px 5px;
+}
+.event{
+    background-color: #f1f1f1;
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 20px 20px 20px 20px;
 }
 
-.preference img {
-    height: 20px;
-    width: 20px;
-    padding: 3px;
-    float: right;
+.title{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px 10px 20px 0px;
+    width: 100%;
+    padding-left: 10px;
 }
 /*FOOTER STYLING*/
 .footer {
@@ -144,6 +100,12 @@ li a:hover {
     text-decoration: none;
     margin: 5px 2px;
     border-radius: 50%;
+}
+
+.fa-ellipsis-v {
+    float: right;
+    color: #242424;
+    margin: 0%;
 }
 
 .fa-facebook {
