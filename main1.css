@@ -73,7 +73,7 @@ li a:hover {
 }
 .event{
     background-color: #f1f1f1;
-    height: 100px;
+    overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     margin: 20px 20px 20px 20px;
 }
@@ -135,8 +135,8 @@ li a:hover {
 }
 
 .fa-close {
-    color: #0070c9;
-    padding: 0px;
+    color:#000000;;
+    padding: 5px;
     margin: 0px;
 }
 
