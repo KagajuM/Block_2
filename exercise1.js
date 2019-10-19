@@ -20,8 +20,9 @@ var desserts = [
     {'img': 'tiramisu.jpeg', 'text': 'Tarta de Tiramisu','date': '03/06/19 15:47'},
    
 ];
+
+
 function loadFoods() {
-    console.log("Well shit happened");
     var foodContainer = document.getElementById('foods');
     var drinkContainer = document.getElementById('drinks');
     var dessertContainer = document.getElementById('desserts');
@@ -33,6 +34,7 @@ function loadFoods() {
         event.getElementById('img').alt = food.text;
         event.getElementById('text').innerText = food.text;
         event.querySelector('.date').innerText = food.date;
+        event.getElementById('close-button').addEventListener("click", deleteEvent);
         foodContainer.appendChild(event);
     }
     
@@ -43,6 +45,7 @@ function loadFoods() {
         event.getElementById('img').alt = drink.text;
         event.getElementById('text').innerText = drink.text;
         event.querySelector('.date').innerText = drink.date;
+        event.getElementById('close-button').addEventListener("click", deleteEvent);
         drinkContainer.appendChild(event);
     }
 
@@ -53,7 +56,13 @@ function loadFoods() {
         event.getElementById('img').alt = dessert.text;
         event.getElementById('text').innerText = dessert.text;
         event.querySelector('.date').innerText = dessert.date;
+        event.getElementById('close-button').addEventListener("click", deleteEvent);
         dessertContainer.appendChild(event);
     }
 }
 
+function deleteEvent() {
+    var event = this.parentNode;
+    var verticalContainer = event.parentNode;
+    verticalContainer.removeChild(event);
+}
