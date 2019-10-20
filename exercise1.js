@@ -26,43 +26,63 @@ function loadFoods() {
     var foodContainer = document.getElementById('foods');
     var drinkContainer = document.getElementById('drinks');
     var dessertContainer = document.getElementById('desserts');
+    var event;
 
     for(var i = 0; i <foods.length; i++){
         var food = foods[i];
-        var event = document.querySelector('template').content.cloneNode(true); 
-        event.getElementById('img').src = food.img;
-        event.getElementById('img').alt = food.text;
-        event.getElementById('text').innerText = food.text;
-        event.querySelector('.date').innerText = food.date;
-        event.getElementById('close-button').addEventListener("click", deleteEvent);
+        event = createEvent(food.img, food.text, food.date); 
         foodContainer.appendChild(event);
     }
     
     for(var i = 0; i <drinks.length; i++){
         var drink = drinks[i];
-        var event = document.querySelector('template').content.cloneNode(true); 
-        event.getElementById('img').src = drink.img;
-        event.getElementById('img').alt = drink.text;
-        event.getElementById('text').innerText = drink.text;
-        event.querySelector('.date').innerText = drink.date;
-        event.getElementById('close-button').addEventListener("click", deleteEvent);
+        event = createEvent(drink.img, drink.text, drink.date);
         drinkContainer.appendChild(event);
     }
 
     for(var i = 0; i <desserts.length; i++){
         var dessert = desserts[i];
-        var event = document.querySelector('template').content.cloneNode(true); 
-        event.getElementById('img').src = dessert.img;
-        event.getElementById('img').alt = dessert.text;
-        event.getElementById('text').innerText = dessert.text;
-        event.querySelector('.date').innerText = dessert.date;
-        event.getElementById('close-button').addEventListener("click", deleteEvent);
+        var event = createEvent(dessert.img, dessert.text, dessert.date);
         dessertContainer.appendChild(event);
     }
+}
+
+function createEvent(img, text, date){
+    var event = document.querySelector('template').content.cloneNode(true); 
+    event.getElementById('img').src = img;
+    event.getElementById('img').alt = text;
+    event.getElementById('text').innerText = text;
+    event.querySelector('.date').innerText = date;
+    event.getElementById('close-button').addEventListener("click", deleteEvent);
+    event.getElementById('like').addEventListener("click", likeEvent);
+    event.getElementById('share').addEventListener("click", shareEvent);
+    return event; 
 }
 
 function deleteEvent() {
     var event = this.parentNode;
     var verticalContainer = event.parentNode;
     verticalContainer.removeChild(event);
+}
+
+//Like & Unlike function 
+function likeEvent(){
+    if(this.style.color != "red"){
+        this.style.color = "red";
+    } else{
+        this.style.color = "black";
+    }
+}
+
+function shareEvent() {
+    var popup = document.getElementById('share-popup');
+    // console.log("parent node", this.parentNode.parentNode);
+    var eventName = this.parentNode.parentNode.querySelector('#'+'text').innerHTML;
+    popup.getElementsByTagName("h3")[0].innerHTML= "Share '" + eventName + "' ?";
+    popup.style.visibility = "visible";
+    console.log("Close button", popup.querySelector('#close'));
+    popup.querySelector('#close').addEventListener("click", function(){
+        popup.style.visibility = "hidden"; 
+    });
+    
 }

@@ -13,23 +13,27 @@
     <template>
             <div class="event">
                 <a href="#" class="fa fa-close" style="float: right"  id="close-button"></a>
-                <script>
-                    // console.log(this.parent);
-                </script>
                 <div class="clearfix"></div>
                 
                 <img src= "montaditos.jpg" alt="montaditos" id="img">
                 <p style="padding:15px 10px 0px 0px; font-size: 20px" id="text">Montaditos</p>
                 <div class="clearfix"></div>
-                <div style="margin-top:30px">
-                    <a href="#" class="fa fa-thumbs-up"></a>
-                    <a href="#" class="fa fa-comment"></a>
-                    <a href="#" class="fa fa-share-alt"></a>
+                <div class="share-icons" style="margin-top:30px">
+                    <a href="#" class="fa fa-thumbs-up" id="like"></a>
+                    <span class="like-text">Like</span>
+                    <a href="#" class="fa fa-comment" id="comment"></a>
+                    <span class="comment-text">Comment</span>
+                    <a href="#" class="fa fa-share-alt" id="share"></a>
+                    <span class="share-text">Share</span>
                     <p class="date">03/06/19 15:47</p>
                 </div>
             </div>
     </template>
     <!--End of event Card-->
+
+
+            
+
 
     <body onload="loadFoods()">
 
@@ -47,6 +51,18 @@
                 </ul>
         </div>
 
+        <div class="share-popup" id="share-popup">
+                <a href="#" class="fa fa-close" id="close"
+                style="float: right; border: 5px solid white; padding: 1px; color:white"></a>
+                <br/>
+                <h3 style="text-align: center; color:white; padding: 10px">Hello World!</h3>
+                <br/>
+                <div style="text-align: center" id = "icons">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                </div>
+        </div>
 
         <div class="body-container">
             <!-- BOX 1 DIV -->

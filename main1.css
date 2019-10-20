@@ -85,6 +85,8 @@ li a:hover {
     width: 100%;
     padding-left: 10px;
 }
+
+
 /*FOOTER STYLING*/
 .footer {
     padding-left: 20px;
@@ -140,24 +142,65 @@ li a:hover {
     margin: 0px;
 }
 
+/* Like Icon */
 .fa-thumbs-up {
-    color: #000000;
+    color: black;
     padding: 0px;
     size: 10px;
     float: left;
     margin: 0px;
 }
+.fa-thumbs-up:hover .like-text{
+    visibility: visible;
+}
 
+/* Comment Icon */
 .fa-comment{
     color: #000000;
     padding: 0px;
     float: left;
     margin: 0px; 
 }
+.fa-comment:hover .comment-text{
+    visibility: visible;
+}
 
+/* Share Icon */
 .fa-share-alt{
     color: #000000;
     padding: 0px;
     float: left;
     margin: 0px; 
 }
+.fa-share-alt:hover .share-text{
+    visibility: visible;
+}
+
+/* Tooltips for descriptions */
+.like-text .comment-text .share {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/*Sharing popup*/
+.share-popup {
+    text-align: center;
+    visibility: hidden;
+    background-color: #242424;
+    padding: 0px 0px 10px 0px;
+    border-radius: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+} 
