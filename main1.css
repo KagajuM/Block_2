@@ -177,7 +177,7 @@ li a:hover {
 }
 
 /* Tooltips for descriptions */
-.like-text .comment-text .share {
+.like-text, .comment-text, .share-text {
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -189,6 +189,7 @@ li a:hover {
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
+    
 }
 
 /*Sharing popup*/
