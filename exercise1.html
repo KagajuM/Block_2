@@ -51,9 +51,9 @@
                         
                     </li>
                     <li><h1 style = "color: white; float: left">My Restaurant Review</h1></li>
-                    <li style="float: right"><a href="#option3">Contact Us</a></li>
-                    <li style="float: right"><a href="#option2">About</a></li>
-                    <li style="float: right"><a href="#option1">Donations</a></li>
+                    <li style="float: right"><a href="#option3">Log Out</a></li>
+                    <li style="float: right"><a href="#option2">Register</a></li>
+                    <li style="float: right"><a href="#option1">Login</a></li>
                 </ul>
         </div>
 
@@ -76,7 +76,13 @@
                 <div>
                     <p class="title">
                         Food
-                        <a href="#" class="fa fa-ellipsis-v"></a>
+                        <a href="#" class="fa fa-ellipsis-v" onclick="showMenu('foods')"></a>
+                        <div class="dropdown-content">
+                                <p onclick="archiveList('foods')">Archive List</p>
+                                <p>Add Item</p>
+                                <p>Bookmark</p>
+                                <p>About</p>
+                            </div>
                     </p>
                 </div>
             </div>
@@ -86,7 +92,13 @@
                 <div>
                     <p class="title">
                         Drinks
-                        <a href="#" class="fa fa-ellipsis-v"></a>
+                        <a href="#" class="fa fa-ellipsis-v" onclick="showMenu('drinks')"></a>
+                        <div class="dropdown-content">
+                                <p onclick="archiveList('drinks')">Archive List</p>
+                                <p>Add Item</p>
+                                <p>Bookmark</p>
+                                <p>About</p>
+                            </div>
                     </p>
                             
                </div>
@@ -97,7 +109,13 @@
                 <div>
                     <p class="title">
                         Desserts
-                        <a href="#" class="fa fa-ellipsis-v"></a>
+                        <a href="#" class="fa fa-ellipsis-v" onclick="showMenu('desserts')"></a>
+                        <div class="dropdown-content">
+                            <p onclick="archiveList('desserts')">Archive List</p>
+                            <p>Add Item</p>
+                            <p>Bookmark</p>
+                            <p>About</p>
+                        </div>
                     </p>
                             
                 </div>

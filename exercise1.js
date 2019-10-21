@@ -83,6 +83,20 @@ function shareEvent() {
     console.log("Close button", popup.querySelector('#close'));
     popup.querySelector('#close').addEventListener("click", function(){
         popup.style.visibility = "hidden"; 
-    });
-    
+    });    
+}
+
+function showMenu(id){
+    var container = document.getElementById(id);
+    var dropdown = container.querySelector(".dropdown-content");
+    if (dropdown.style.display == "block"){
+        dropdown.style.display = "none";
+    } else {
+        dropdown.style.display = "block";
+    }
+}
+
+function archiveList(id){
+    var container = document.getElementById(id);
+    container.parentNode.removeChild(container);
 }
