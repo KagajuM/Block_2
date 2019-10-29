@@ -34,15 +34,15 @@ function loadFoods() {
         foodContainer.appendChild(event);
     }
     
-    for(var i = 0; i <drinks.length; i++){
+    for(i = 0; i <drinks.length; i++){
         var drink = drinks[i];
         event = createEvent(drink.img, drink.text, drink.date);
         drinkContainer.appendChild(event);
     }
 
-    for(var i = 0; i <desserts.length; i++){
+    for(i = 0; i <desserts.length; i++){
         var dessert = desserts[i];
-        var event = createEvent(dessert.img, dessert.text, dessert.date);
+        event = createEvent(dessert.img, dessert.text, dessert.date);
         dessertContainer.appendChild(event);
     }
 }
