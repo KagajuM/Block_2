@@ -25,9 +25,12 @@ var users = [
     
 ];
 
-var interests = {
+var interests = [
     'Italian', 'Fast Food', 'Traditional'
-};
+];
+
+var isLoggedIn = false;
+// window.onload = isLoggedIn(); 
 
 function loadFoods() {
     var foodContainer = document.getElementById('foods');
@@ -127,8 +130,30 @@ function selectInterest() {
     }
 }
 
-function loadInterests() {
-    for(int = 0; i < interests) {
+// function loadInterests() {
+//     for(int = 0; i < interests; i) {
         
+//     }
+// }
+
+function isLoggedIn(){
+    var profilePic = document.getElementById('profile-picture');
+    var username = document.getElementById('username');
+    if(isLoggedIn){
+        profilePic.src = 'lebron_profile_pic.jpg';
+        username.innerHTML = name;
+
     }
+}
+
+function logout(){
+    
+    var div = document.querySelector('.logged-out');
+    div.style.display = "inline-grid";
+    var heading = document.querySelector('.heading');
+    //heading.removeChild(document.querySelector('#logout'));
+    var newbody = document.createElement('body');
+    newbody.appendChild(heading);
+    newbody.appendChild(div);
+    document.body = newbody;
 }
