@@ -172,7 +172,7 @@ function setCookie(email, firstName, lastName, birthday, language, interests) {
     account.birthday = birthday;
     account.language = language;
     account.interests = interests;
-    document.cookie = sprintf(`%s=%s`, email, JSON.stringify(account))
+    document.cookie = sprintf(`%s=%s`, email, JSON.stringify(account));
 }
 
 // returns value of cookie, which consists of serialized account object
@@ -201,3 +201,16 @@ function showLogin(){
     logoutScreen.style.display = 'none';
     div.style.display = "block";
 }
+
+function showRegister(){
+    console.log("Creating Register Page", document.body);
+    var div = document.querySelector('.registration-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
+    var loginScreen = document.querySelector('.login-form');
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'none';
+    logoutScreen.style.display = 'none';
+    login-screen.style.display = 'none';
+    div.style.display = "block";
+}
+

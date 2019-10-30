@@ -38,14 +38,14 @@
             </div>
         </template>
         <!--End of event Card-->
-        
+
         <!-- Interest Card -->
         <template>
             <div class="interest"></div>
         </template>
         <!-- End of Interest Card -->
 
-       
+
 
         <!-- HEADING DIV -->
         <div class="heading">
@@ -79,8 +79,8 @@
 
         <!-- LOGGING OUT SCREEN -->
         <div class="logoutScreen">
-           <button class = "custom-button" type="button" onclick="showLogin()"> Login</button>
-           <button class = "custom-button" type="button" onclick = "register()"> Register</button>
+            <button class = "custom-button" type="button" onclick="showLogin()"> Login</button>
+            <button class = "custom-button" type="button" onclick = "register()"> Register</button>
         </div>
         <!-- END OF LOGGING OUT SCREEN -->
 
@@ -94,13 +94,40 @@
                 <input type="text" name="password"><br>
 
                 <button class = "custom-button" type="button" onclick = "login()"> Login</button>
-                
+
             </form>
         </div>
-        <!-- End of LOGGING IN SCREEN -->
+        <!-- END OF LOGGING IN SCREEN -->
+
+        <!-- REGISTRATION SCREEN -->
+        <div class="registration-form" style="display:block">
+            <form>
+                <h2>Create your account!</h2>
+                First Name*<br>
+                <input type="text" name="firstname"><br>
+                Last Name*<br>
+                <input type="text" name="lastname"><br>
+                Email*<br>
+                <input type="text" name="birthday"><br>
+                Date of Birth*<br>
+                <input type="text" name="language"><br>
+                Language<br>
+                <input type="text" name="interests"><br>
+                Interests<br>
+                <div id="interests-container">
+                    <div class="interest">bowling</div>
+                </div>
+                
+                <div class="clearfix"></div>
+                
+                <button class = "custom-button" type="button" onclick = "createCookie()"> Delete</button>
+                <button class = "custom-button" type="button" onclick = "createCookie()"> Save</button>
+            </form>
+        </div>
+        <!-- END OF REGISRATION SCREEN -->
 
         <div class="body-container">
-            
+
             <!-- BOX 1 DIV -->
             <div class="vertical-container" id= "foods" > 
                 <div>
@@ -149,27 +176,6 @@
             </div>
         </div>
 
-
-        <div class="registration-form" onload="loadForm()">
-            <form>
-                <h2>Create your account!</h2>
-                First Name*<br>
-                <input type="text" name="firstname"><br>
-                Last Name*<br>
-                <input type="text" name="firstname"><br>
-                Email*<br>
-                <input type="text" name="firstname"><br>
-                Date of Birth*<br>
-                <input type="text" name="firstname"><br>
-                Language<br>
-                <input type="text" name="firstname"><br>
-                Interests<br>
-                <div id="interests-container">
-                    <div class="interest">bowling</div>
-                </div>
-                
-            </form>
-        </div>
         <div class="clearfix"></div>
 
         <!-- FOOTER -->
@@ -177,7 +183,7 @@
             <div class="footer" style="text-align: center">
                 <a href="#" class="fa fa-facebook"></a>
                 <a href="#" class="fa fa-twitter"></a>
-            '    <a href="#" class="fa fa-instagram"></a>
+                '    <a href="#" class="fa fa-instagram"></a>
                 <a href="#" class="fa fa-linkedin"></a>
             </div>
         </footer>
