@@ -157,3 +157,34 @@ function logout(){
     newbody.appendChild(div);
     document.body = newbody;
 }
+
+// email, firstName, lastName, language - String
+// birthday - Date
+// interests - List<String>
+function setCookie(email, firstName, lastName, birthday, language, interests) {
+    var account = {};
+    account.firstName = firstName;
+    account.lastName = lastName;
+    account.birthday = birthday;
+    account.language = language;
+    account.interests = interests;
+    document.cookie = sprintf(`%s=%s`, email, JSON.stringify(account))
+}
+
+// returns value of cookie, which consists of serialized account object
+function getCookie(cname) {
+    var name = cname + "=";
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var valueIndex = cookie.indexOf('=') + 1;
+        var key = cookie.substring(0, valueIndex);
+        if(name != key) continue;
+        var value = "";
+        // if statement below is to avoid index out of bounds when value is empty String
+        if(valueIndex < cookie.length) value = cookie.substring(valueIndex);
+        return value;
+    }
+    return "";
+}
+
