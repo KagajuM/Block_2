@@ -147,8 +147,12 @@ function isLoggedIn(){
 }
 
 function logout(){
-    
-    var div = document.querySelector('.logged-out');
+    console.log("Trying to Logout", document.body);
+    var div = document.querySelector('.logoutScreen');
+    var loginForm = document.querySelector('.login-form'); 
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'none';
+    loginForm.style.display = 'none';
     div.style.display = "inline-grid";
     var heading = document.querySelector('.heading');
     //heading.removeChild(document.querySelector('#logout'));
@@ -188,3 +192,12 @@ function getCookie(cname) {
     return "";
 }
 
+function showLogin(){
+    console.log("Trying to Login", document.body);
+    var div = document.querySelector('.login-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'none';
+    logoutScreen.style.display = 'none';
+    div.style.display = "block";
+}

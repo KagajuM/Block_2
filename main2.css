@@ -91,14 +91,14 @@ li a:hover {
 }
 
 /* REGISTRATION FORM STYLING*/
-.registration-form {
+.registration-form, .login-form {
     background-color: #d1d4d7;
     padding: 20px;
     margin-top: 20px;
     font-size: 20px;
 }
 
-.registration-form input {
+.registration-form input, .login-form input {
     margin: 10px 0px 30px 0px;
     width: 500px;
     height: 50px;
@@ -242,8 +242,6 @@ li a:hover {
 
 .dropdown-content {
     display: none;
-    
-    /* position: absolute; */
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
@@ -263,11 +261,15 @@ li a:hover {
     font-size: 16px;
   }
 
-  .logged-out {
+  .logoutScreen {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -50px;
     margin-left: -50px;
+  }
+
+  .login-form, .registration-form{
+      display:none;
   }

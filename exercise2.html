@@ -57,10 +57,12 @@
                 <li><h1 style = "color: white; float: left" id="username">My Restaurant Review</h1></li>
                 <li style="float: right" id="logout" onclick="logout()"><a href="#Logout">Log Out</a></li>
                 <li style="float: right" id="register"><a href="#Register">Register</a></li>
-                <li style="float: right" id="login"><a href="#Login">Login</a></li>
+                <li style="float: right" id="login" onclick="showLogin()"><a href="#Login">Login</a></li>
             </ul>
         </div>
+        <!-- End of HEADING DIV -->
 
+        <!-- SHARE POPUP DIV -->
         <div class="share-popup" id="share-popup">
             <a href="#" class="fa fa-close" id="close"
                style="float: right; border: 5px solid white; padding: 1px; color:white"></a>
@@ -73,13 +75,32 @@
                 <a href="#" class="fa fa-instagram"></a>
             </div>
         </div>
+        <!-- End of SHARE POPUP DIV -->
 
-        <div class="logged-out">
-           <button class = "custom-button" type="button" onclick = "login()"> Login</button>
+        <!-- LOGGING OUT SCREEN -->
+        <div class="logoutScreen">
+           <button class = "custom-button" type="button" onclick="showLogin()"> Login</button>
            <button class = "custom-button" type="button" onclick = "register()"> Register</button>
         </div>
+        <!-- END OF LOGGING OUT SCREEN -->
+
+        <!-- LOGGING IN SCREEN -->
+        <div class="login-form" style="margin-top: 100px">
+            <form>
+                <h2>Login!</h2>
+                Email<br>
+                <input type="text" name="password"><br>
+                Password<br>
+                <input type="text" name="password"><br>
+
+                <button class = "custom-button" type="button" onclick = "login()"> Login</button>
+                
+            </form>
+        </div>
+        <!-- End of LOGGING IN SCREEN -->
 
         <div class="body-container">
+            
             <!-- BOX 1 DIV -->
             <div class="vertical-container" id= "foods" > 
                 <div>
@@ -127,6 +148,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="registration-form" onload="loadForm()">
             <form>
                 <h2>Create your account!</h2>
