@@ -21,16 +21,18 @@ var desserts = [
    
 ];
 
-var users = [
-    
-];
-
 var interests = [
-    'Italian', 'Fast Food', 'Traditional'
+    'Italian', 'Fast Food', 'Traditional', 'Cheap', 'Spanish', 'Fancy'
 ];
 
-var isLoggedIn = false;
-// window.onload = isLoggedIn(); 
+// start off logged in
+var isLoggedIn = true;
+
+function load() {
+    loadFoods();
+    loadInterests();
+    logout();
+}
 
 function loadFoods() {
     var foodContainer = document.getElementById('foods');
@@ -111,78 +113,180 @@ function archiveList(id){
     container.parentNode.removeChild(container);
 }
 
-function loadForm() {
+function loadInterests() {
+    var interestsContainer = document.getElementById("interests-container")
+    for(var i = 0; i < interests.length; i++) {
+        var interest = createInterest(interests[i]);
+        interestsContainer.appendChild(interest);
+    }
 }
 
 function createInterest(text) {
     var interest = document.createElement('div');
     interest.className = "interest"; // CHECK
     interest.textContent = text;
-    event.addEventListener("click", selectInterest);
-    return event; 
+    interest.addEventListener("click", selectInterest);
+    return interest; 
 }
 
 function selectInterest() {
-    if(this.style.color == "#f1f1f1") {
-       this.color = "yellow";
+    if(this.style.backgroundColor == "whitesmoke") {
+       this.style.backgroundColor = "mediumslateblue";
     } else {
-        this.color = "#f1f1f1";
+        this.style.backgroundColor = "whitesmoke";
     }
 }
 
-// function loadInterests() {
-//     for(int = 0; i < interests; i) {
-        
-//     }
-// }
+function clearFormInputs() {
+    document.getElementById("firstname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("firstname").value = "";
+    document.getElementById("lastname").value = "";
+    document.getElementById("birthday").value = "";
+    document.getElementById("language").value = "";
+}
 
-function isLoggedIn(){
-    var profilePic = document.getElementById('profile-picture');
-    var username = document.getElementById('username');
-    if(isLoggedIn){
-        profilePic.src = 'lebron_profile_pic.jpg';
-        username.innerHTML = name;
-
+function login() {
+    document.getElementById("logout").style.display = 'block';
+    document.getElementById("login").style.display = 'none';
+    document.getElementById("register").style.display = 'none';
+    var username = document.getElementById("username-login").value;
+    var password = document.getElementById("password-login").value;
+    var account = getCookie(username);
+    console.log("username: " + username + ", password: " + password + ", account: " + account);
+    if(account == "") {
+        window.alert("There is no account associated with that username.");
+        return;
     }
+    account = JSON.parse(account);
+    if(account.password != password) {
+        window.alert("Incorrect password.");
+        return;
+    }
+    isLoggedIn = true;
+    document.getElementById('profile-picture').src = 'lebron_profile_pic.jpg';
+    showBodyContainer();
+    document.getElementById('username').innerHTML = `${account.firstName} ${account.lastName}  (@${username}))`;
+    window.alert(`Welcome back, ${account.firstName}!`);
+    document.getElementById("username-login").value = "";
+    document.getElementById("password-login").value = "";
+}
+
+function showLogin(){
+    console.log("Trying to Login", document.body);
+    var loginScreen = document.querySelector('.login-form');
+    var registrationScreen = document.querySelector('.registration-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'none';
+    logoutScreen.style.display = 'none';
+    loginScreen.style.display = 'block';
+    registrationScreen.style.display = 'none';
+}
+
+function showRegister(){
+//    loadInterests();
+    console.log("Creating Register Page", document.body);
+    var registrationScreen = document.querySelector('.registration-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
+    var loginScreen = document.querySelector('.login-form');
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'none';
+    logoutScreen.style.display = 'none';
+    loginScreen.style.display = 'none';
+    registrationScreen.style.display = 'block';
+}
+
+function showBodyContainer(){
+    console.log("Logged in", document.body);
+    var loginScreen = document.querySelector('.login-form');
+    var registrationScreen = document.querySelector('.registration-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
+    var bodyContainer = document.querySelector('.body-container');
+    bodyContainer.style.display = 'flex';
+    logoutScreen.style.display = 'none';
+    loginScreen.style.display = 'none';
+    registrationScreen.style.display = 'none';
 }
 
 function logout(){
+    document.getElementById("logout").style.display = 'none';
+    document.getElementById("login").style.display = 'block';
+    document.getElementById("register").style.display = 'block';
     console.log("Trying to Logout", document.body);
-    var div = document.querySelector('.logoutScreen');
-    var loginForm = document.querySelector('.login-form'); 
+    var loginScreen = document.querySelector('.login-form');
+    var registrationScreen = document.querySelector('.registration-form');
+    var logoutScreen = document.querySelector('.logoutScreen');
     var bodyContainer = document.querySelector('.body-container');
     bodyContainer.style.display = 'none';
-    loginForm.style.display = 'none';
-    div.style.display = "inline-grid";
-    var heading = document.querySelector('.heading');
-    //heading.removeChild(document.querySelector('#logout'));
-    var newbody = document.createElement('body');
-    newbody.appendChild(heading);
-    newbody.appendChild(div);
-    document.body = newbody;
+    logoutScreen.style.display = 'inline-grid';
+    loginScreen.style.display = 'non';
+    registrationScreen.style.display = 'none';
+    
+    isLoggedIn = false;
+    document.getElementById('profile-picture').src = 'burger_icon.png';
+    document.getElementById('username').innerHTML = "My Restaurant Review";
 }
 
 // email, firstName, lastName, language - String
 // birthday - Date
 // interests - List<String>
-function setCookie(email, firstName, lastName, birthday, language, interests) {
+function createCookie() {
     var account = {};
-    account.firstName = firstName;
-    account.lastName = lastName;
-    account.birthday = birthday;
-    account.language = language;
-    account.interests = interests;
-    document.cookie = sprintf(`%s=%s`, email, JSON.stringify(account));
+    var username = document.getElementById("username-input").value;
+    if(username == "") {
+        window.alert("You must enter a username.");
+        return;
+    } else if(getCookie(username) != "") {
+        window.alert("That username is already taken.");
+        return;
+    }
+    account.email = document.getElementById("email").value;
+    account.password = document.getElementById("password").value;
+    if(account.password.length > 8 || account.password == "" || !/^[a-z0-9]+$/i.test(account.password)) {
+        window.alert("You must enter a password with a maximum of 8 characters, where the allowed characters are letters [a-z] and digits [0-9]).");
+        return;
+    } 
+    account.firstName = document.getElementById("firstname").value;
+    if(account.firstName == "") {
+        window.alert("You must enter your name.");
+        return;
+    }
+    account.lastName = document.getElementById("lastname").value;
+    if(account.lastName == "") {
+        window.alert("You must enter your last name.");
+        return;
+    }
+    account.birthday = document.getElementById("birthday").value;
+    if(!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(account.birthday)) {
+        window.alert("You must enter your date of birth in the proper format (dd/mm/yyyy).");
+        return;
+    }
+    account.language = document.getElementById("language").value;
+    account.purpose = document.getElementById("purpose").value;
+    var interestsContainer = document.getElementById("interests-container").childNodes;
+    
+    account.interests = [];
+    for(var i = 0; i < interestsContainer.length; i++) {
+        interests.push(interestsContainer.item(i).textContent);
+    }
+    document.cookie = `${username}=${JSON.stringify(account)}`;
+    window.alert(document.cookie);
+    window.alert("You have successfully created your account!");
+    clearFormInputs();
+    showLogin();
 }
 
 // returns value of cookie, which consists of serialized account object
 function getCookie(cname) {
     var name = cname + "=";
-    var cookies = document.cookie.split(';');
+    var cookies = document.cookie.split("; ");
     for(var i = 0; i < cookies.length; i++) {
         var cookie = cookies[i];
         var valueIndex = cookie.indexOf('=') + 1;
         var key = cookie.substring(0, valueIndex);
+//        console.log(name + " " + key);
         if(name != key) continue;
         var value = "";
         // if statement below is to avoid index out of bounds when value is empty String
@@ -192,25 +296,14 @@ function getCookie(cname) {
     return "";
 }
 
-function showLogin(){
-    console.log("Trying to Login", document.body);
-    var div = document.querySelector('.login-form');
-    var logoutScreen = document.querySelector('.logoutScreen');
-    var bodyContainer = document.querySelector('.body-container');
-    bodyContainer.style.display = 'none';
-    logoutScreen.style.display = 'none';
-    div.style.display = "block";
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 
-function showRegister(){
-    console.log("Creating Register Page", document.body);
-    var div = document.querySelector('.registration-form');
-    var logoutScreen = document.querySelector('.logoutScreen');
-    var loginScreen = document.querySelector('.login-form');
-    var bodyContainer = document.querySelector('.body-container');
-    bodyContainer.style.display = 'none';
-    logoutScreen.style.display = 'none';
-    login-screen.style.display = 'none';
-    div.style.display = "block";
-}
-
+//deleteAllCookies();
