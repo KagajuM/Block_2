@@ -274,3 +274,9 @@ li a:hover {
   .login-form, .registration-form{
       display:none;
   }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
