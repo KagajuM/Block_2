@@ -148,13 +148,12 @@ function clearFormInputs() {
 }
 
 function login() {
-    document.getElementById("logout").style.display = 'block';
-    document.getElementById("login").style.display = 'none';
-    document.getElementById("register").style.display = 'none';
     var username = document.getElementById("username-login").value;
     var password = document.getElementById("password-login").value;
     var account = getCookie(username);
     console.log("username: " + username + ", password: " + password + ", account: " + account);
+    document.getElementById("username-login").value = "";
+    document.getElementById("password-login").value = "";
     if(account == "") {
         window.alert("There is no account associated with that username.");
         return;
@@ -169,8 +168,9 @@ function login() {
     showBodyContainer();
     document.getElementById('username').innerHTML = `${account.firstName} ${account.lastName}  (@${username}))`;
     window.alert(`Welcome back, ${account.firstName}!`);
-    document.getElementById("username-login").value = "";
-    document.getElementById("password-login").value = "";
+    document.getElementById("logout").style.display = 'block';
+    document.getElementById("login").style.display = 'none';
+    document.getElementById("register").style.display = 'none';
 }
 
 function showLogin(){
@@ -211,9 +211,6 @@ function showBodyContainer(){
 }
 
 function logout(){
-    document.getElementById("logout").style.display = 'none';
-    document.getElementById("login").style.display = 'block';
-    document.getElementById("register").style.display = 'block';
     console.log("Trying to Logout", document.body);
     var loginScreen = document.querySelector('.login-form');
     var registrationScreen = document.querySelector('.registration-form');
@@ -227,6 +224,10 @@ function logout(){
     isLoggedIn = false;
     document.getElementById('profile-picture').src = 'burger_icon.png';
     document.getElementById('username').innerHTML = "My Restaurant Review";
+    document.getElementById("logout").style.display = 'none';
+    document.getElementById("login").style.display = 'block';
+    document.getElementById("register").style.display = 'block';
+    
 }
 
 // email, firstName, lastName, language - String
