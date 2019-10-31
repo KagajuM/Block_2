@@ -307,4 +307,4 @@ function deleteAllCookies() {
     }
 }
 
-deleteAllCookies();
+//deleteAllCookies();
